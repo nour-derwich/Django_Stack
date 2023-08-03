@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>books</title>
+</head>
+<body>
+    <div>
+        <h1>add Authers</h1>
+        <form action="{% url 'create_auther' %}" method="POST">
+            {% csrf_token %}
+         
+           {{ form.as_p }}
+           
+       
+            <input type="submit" value="Add">
+        </form>
+    </div>
+    <div>
+        <h1>Authers list</h1>
+        {% for a in authers %}
+        <li>{{a.name}}  <a href="show/auther/{{ a.id }}">Show</a>li>
+        {% endfor %}
+    </div>
+</body>
+</html>

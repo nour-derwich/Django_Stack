@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>books</title>
+</head>
+<body>
+    <div>
+        <h1>add books</h1>
+        <form action="{% url 'create' %}" method="POST">
+            {% csrf_token %}
+         
+           {{ form.as_p }}
+             <!-- <div>
+            <label for="">title</label>
+            <input type="text"name="title">
+           </div>  -->
+       
+            <input type="submit" value="Add">
+        </form>
+    </div>
+    <div>
+        <h1>books list</h1>
+        {% for b in books %}
+        <li>{{b.title}}  <a href="show/{{ b.id }}">Show</a>|<a href="update/{{ b.id }}">Edit</a>|<a href="delet/{{ b.id }}">delet</a></li>
+        {% endfor %}
+    </div>
+</body>
+</html>
