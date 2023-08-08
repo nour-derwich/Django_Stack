@@ -5,8 +5,8 @@ from .models import Auther
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title']
+        fields = ['title','description','imgae','number_page','type']
 class AutherForm(forms.ModelForm):
     class Meta:
         model = Auther
-        fields = ['name']
+        fields = ['name','notes','books']

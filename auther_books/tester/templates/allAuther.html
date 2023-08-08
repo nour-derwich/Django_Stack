@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/author_dash.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+    <title>Authers</title>
 </head>
 <body>
-    <div>
+    <!-- <div>
         <h1>add Authers</h1>
         <form action="{% url 'create_auther' %}" method="POST">
             {% csrf_token %}
@@ -16,12 +22,69 @@
        
             <input type="submit" value="Add">
         </form>
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
         <h1>Authers list</h1>
         {% for a in authers %}
-        <li>{{a.name}}  <a href="show/auther/{{ a.id }}">Show</a>li>
+
+        <li>{{a.name}}  <a href="show/auther/{{ a.id }}">Show</a>|<a href="update/author/{{ a.id }}">Edit</a>|<a href="delet/author/{{ a.id }}">delete</a></li>
         {% endfor %}
-    </div>
+    </div> -->
+    <section id="team" class="pb-5">
+        <div class="container">
+            <h5 class="section-title h1">Authors List</h5>
+            <div class="row">
+                <!-- Team member -->{% for a in authers %}
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    
+                    <div class="image-flip" >
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class=" img-fluid" src="https://i2-prod.cornwalllive.com/incoming/article4783406.ece/ALTERNATES/s615b/0_William_Golding_1983.jpg" alt="card image"></p>
+                                        <h4 class="card-title">{{a.name}}</h4>
+                                        <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                        <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">Sunlimetech</h4>
+                                        <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>{% endfor %}
+               
+            </div>
+        </div>
+    </section>
 </body>
 </html>

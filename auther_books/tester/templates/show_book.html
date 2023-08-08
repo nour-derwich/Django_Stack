@@ -1,19 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/show_book.css' %}">
     <title>{{ book.title }}</title>
 </head>
 <body>
-    
- <h1>{{ book.title }}</h1>
- <h2>Authors:</h2>
- <ul>
-     {% for author in authors %}
-     <li>{{ author.name }}</li>
-     {% endfor %}
- </ul>
-   
 
-    <a href="{% url 'list_books' %}">Back to List</a>
+    <div id="show-book">
+  
+      
+      <section class="light">
+        <div class="container py-2">
+          <div class="h1 text-center text-dark" id="pageHeaderTitle">Bio</div>
+      
+          <article class="postcard light blue">
+            <a class="postcard__img_link" href="#">
+              <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+            </a>
+            <div class="postcard__text t-dark">
+              <h1 class="postcard__title blue">{{ book.title }}</h1>
+              <div class="postcard__subtitle small">
+                <time datetime="2020-05-25 12:00:00">
+                  Type : {{book.type}}, <br><i class="fas fa-calendar-alt mr-2"></i>May 25th 2020
+                </time>
+              </div>
+              <div class="postcard__bar"></div>
+              
+    
+              <div class="postcard__preview-txt">Authors: {{ book.number_page }}</div>
+              <div class="postcard__preview-txt">{{ book.description }}</div>
+              <ul class="postcard__tagbox">
+                <li class="tag__item"><i class="fas fa-tag mr-2"></i><a href="update/{{book.id}}">Update</a></li>
+                <li class="tag__item"><i class="fas fa-clock mr-2"></i> {{ book.number_page }} pages.</li>
+                <li class="tag__item play blue">
+                  <a href="delete/{{ book.id }}">Delete</a>
+                </li>
+              </ul>
+            </div>
+          </article>
+          <article class="postcard light red">
+            <a class="postcard__img_link" href="#">
+              <img class="postcard__img" src="https://picsum.photos/501/500" alt="Image Title" />	
+            </a>
+            <div class="postcard__text t-dark">
+              <h1 class="postcard__title red"><a href="#">Add Author</a></h1>
+              
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">
+               
+                <form action="{% url 'create_auther' %}" method="POST">
+                  {% csrf_token %}
+               
+                 {{ form.as_p }}
+                 
+             
+                  <input type="submit" value="Add">
+              </form>
+              
+              </div>
+              
+            </div>
+          </article>
+          
+         
+        </div>
+      </section>
+
+    <a href="{% url 'list_books' %}">Back to List</a></div>
 </body>
 </html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete author</title>
+</head>
+<body>
+    <h1>Delete Author</h1>
+    <p>Are you sure you want to delete "{{ author.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Confirm Delete">
+    </form>
+    <a href="{% url 'list_authers' %}">Cancel</a>
+</body>
+</html>

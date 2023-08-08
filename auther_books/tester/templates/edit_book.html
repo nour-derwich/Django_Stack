@@ -1,16 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/update_book.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Update Book</title>
 </head>
 <body>
-    <h1>Update Book</h1>
+    <!-- <h1>Update Book</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Update">
     </form>
-    <a href="{% url 'list_books' %}">Cancel</a>
-   
+    <a href="{% url 'list_books' %}">Cancel</a> -->
+    <div class="container">
+        <div class=" text-center mt-5 ">
+
+            <h1 >Update Book</h1>
+                
+            
+        </div>
+
+    
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+       
+            <div class = "container">
+                             <!-- <form method="post" id="contact-form">
+
+                                {% csrf_token %}
+
+            <div class="controls">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Title :</label>
+                            <input id="form_name" type="text" name="title" class="form-control" value="{{book.title}}">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="form_name">Nomber of pages :</label>
+                            <input id="form_name" type="number" name="number_page" class="form-control" value="{{book.number_page}}">
+                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="form_name">Book Type :</label>
+                            <input id="form_name" type="text" name="type" class="form-control" value="{{book.type}}">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="form_name">Image Url :</label>
+                            <input id="form_name" type="text" name="type" class="form-control" value="{{book.imgae}}">
+                            
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="form_message">Description *</label>
+                            <input id="form_message" name="description" class="form-control" rows="3" value="{{book.description}}">
+                            </div>
+
+                        </div>
+
+
+                    <div class="col-md-12">
+                        <br>
+                        <input type="submit" class="btn btn-success btn-send  pt-2 btn-block
+                            " value="Send Message" >
+                    
+                </div>
+          
+                </div>
+
+
+        </div>
+         </form><a href="{% url 'list_books' %}">Cancel</a> -->
+      
+         <form method="post" id="contact-form">
+            {% csrf_token %}
+            <div class="controls form-group form-control">
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success btn-send pt-2 btn-block" value="Send Message">
+            </div><a href="{% url 'list_books' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+        
+        
+        </div>
+            </div>
+
+
+    </div>
+        <!-- /.8 -->
+
+    </div>
+    <!-- /.row-->
+
+</div>
+</div>
+
 </body>
 </html>
