@@ -1,15 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/author_show.css' %}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>{{ author.name }}</title>
 </head>
 <body>
+
+    <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger"></div>
+      <header class="avatar">
+            <img src="https://cdn.britannica.com/74/177874-131-62098C6C/Jules-Verne.jpg" />
+        <h2>{{ author.name }}
+          
+        </h2>
+       
+      </header>
+        <h4>Add Book</h4>
+        <form class="form" method="post">
+          {% csrf_token %}
+          <div><label for="book">Select a Book:</label></div>
+          <div class="box"><select name="book" id="book">
+            <option value="" selected disabled>Select a book</option>
+            {% for book in all_books %}
+                <option value="{{ book.id }}">{{ book.title }}</option>
+            {% endfor %}
+        </select></div>
+          
+          
+          <input type="submit" value="Add">
+
+            
+
+
+        </form>
+    </nav>
     
+    <main>
+      <div class="helper">
+        <div class="container">
+          {% for book in author.books.all %}
+            <div class="panel">
+              <div class="ring">
+                <div class="card card1"></div>
+                <div class="border">
+                  <p class="title">{{book.title}}</p>
+                  <div class="slide">
+                    <h6 class="para">{{book.type}}</h6>
+                    <div class="line">
+                      <h6 class="para">OUT</h6> <i class="fa fa-plane" aria-hidden="true"></i>
+                      <h6 class="para">£849</h6>
+                    </div>
+                    <div class="line">
+                      <h6 class="para">RTN</h6> <i class="fa fa-plane" aria-hidden="true"></i>
+                      <h6 class="para">£659</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+      </div>
+    </main>
 
- <h2>Author:</h2>
- <li>{{ author.name }}</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <div >
+        <h2>Author:</h2>
+        <li></li>
+        
+       
+           <a href="{% url 'list_books' %}">Back to List</a>
+    </div> -->
+
  
-
-    <a href="{% url 'list_books' %}">Back to List</a>
 </body>
 </html>
